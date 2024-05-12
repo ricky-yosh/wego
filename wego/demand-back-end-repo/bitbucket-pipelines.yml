@@ -1,0 +1,50 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Unit Test
+          image: python:3.11.6
+          caches:
+            - pip
+          script:
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pip install --upgrade pip
+            - echo "Creating config.py with necessary settings"
+            - |
+              echo "DATABASE_PASSWORD_MYSQL = 'test'" > config.py
+              echo "SECRET_KEY = 'test'" >> config.py
+              echo "DEBUG = True" >> config.py
+            - export DJANGO_ENV=development
+            - python3 manage.py test --noinput --verbosity=2
+      - step:
+          name: Test Coverage
+          image: python:3.11.6
+          caches:
+            - pip
+          script:
+            - export DJANGO_ENV=development
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pip install coverage
+            - echo "Creating config.py with necessary settings"
+            - |
+              echo "DATABASE_PASSWORD_MYSQL = 'test'" > config.py
+              echo "SECRET_KEY = 'test'" >> config.py
+              echo "DEBUG = True" >> config.py
+            - coverage run --source='.' --omit="myproject/asgi.py,myproject/wsgi.py,reload_docker.py" manage.py test --noinput
+            - coverage report
+      - step:
+          name: DemandBackendDeployment
+          deployment: Production
+          script:
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $DEMAND_USER
+                SERVER: $DEMAND_SERVER
+                COMMAND: "cd /home/team12/repos/demand-back-end-repo &&
+                git pull origin main &&
+                source virtual-env/bin/activate &&
+                export DJANGO_ENV=production &&
+                pip install -r requirements.txt &&
+                python3 manage.py migrate"

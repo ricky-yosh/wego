@@ -1,0 +1,103 @@
+/* Base styles for the header */
+.header {
+  width: 100%;
+  background-color: #343F56;
+  /* Dark blue background */
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  /* Proper spacing between brand and links */
+  align-items: center;
+  width: 98%;
+  color: white;
+  height: 46px;
+}
+
+/* Branding on the navbar */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  text-decoration: none;
+  padding: 5px 15px;
+  border-radius: 4px;
+}
+
+/* Container for navigation links */
+/* .navbar-links {
+  display: flex;
+} */
+
+/* Individual navigation links */
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 5px 15px;
+  margin: 0 10px;
+  border-radius: 4px;
+  transition: background-color 300ms;
+}
+
+/* Hover and active states for links */
+.navbar-link:hover,
+.navbar-link.active {
+  background-color: #4074a8;
+  /* Lighter blue for hover */
+}
+
+/* Utilities section of the navbar, flex-grow for spacing */
+.navbar-greeting {
+  color: white;
+  margin: 0 10px;
+  font-size: 1rem;
+}
+
+/* Logout button styling */
+.navbar-logout {
+  color: white;
+  cursor: pointer;
+  background-color: #343F56;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px 15px;
+  margin: 0 10px;
+  transition: background-color 300ms;
+}
+
+/* Hover state for logout button */
+.navbar-logout:hover {
+  background-color: #4074a8;
+}
+
+/* Media query for responsive adjustment */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .navbar-links,
+  .navbar-logout {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-link,
+  .navbar-logout {
+    padding: 5px 10px;
+    margin: 5px 0;
+  }
+}

@@ -1,0 +1,21 @@
+.footer {
+    background-color: #343F56;
+    /* Dark background color */
+    color: white;
+    /* Text color */
+    text-align: center;
+    /* Center-align the text */
+    padding: 20px 10px;
+    /* Padding inside the footer */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Full width */
+}
+
+.footer-content {
+    margin: auto;
+    /* Center the content */
+    font-size: 16px;
+    /* Text size */
+}

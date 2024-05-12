@@ -1,0 +1,30 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: SupplyFrontendDeployment
+          deployment: Production
+          script:
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $SUPPLY_USER
+                SERVER: $SUPPLY_SERVER
+                COMMAND: |
+                  set -e;
+                  export VITE_MAPBOX_API_TOKEN="$VITE_MAPBOX_API_TOKEN";
+                  cd /home/team12/repos/supply-front-end-repo;
+                  git pull origin main;
+                  npm install;
+                  npm run build;
+                # npm test - removed until Bitbucket Pipeline becomes quicker
+
+# pipelines:
+#   branches:
+#     main:
+#         - step:
+#             name: SupplyFrontendStage
+#             deployment: Staging
+#             script:
+#               - echo "pipeline disabled for main"

@@ -1,0 +1,40 @@
+.Navigation-Container {
+    display: flex;
+    justify-content: end;
+    height: 100px;
+    /* box-shadow: 2px 2px 2px #343f56; */
+    background-color: #343f56;
+}
+
+.Project-Name-Container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding-left: 50px;
+    font-size: 20px;
+}
+
+.Button-Container {
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+    gap: 50px;
+}
+
+.Button-Container button {
+    border: none;
+    background-color: #343f56;
+    color: white;
+    font-weight: 250;
+    font-size: 20px;
+    opacity: 1.0;
+}
+
+.Button-Container button:hover {
+    border: none;
+    background-color: #343f56;
+    color: white;
+    font-weight: 250;
+    font-size: 20px;
+    opacity: 0.5;
+}

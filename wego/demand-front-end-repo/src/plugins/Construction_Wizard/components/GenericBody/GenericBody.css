@@ -1,0 +1,133 @@
+/****************************/
+
+.Item-Box {
+    height: fit-content;
+    /* z-index: 1; */
+    position: absolute;
+    padding-left: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#Item {
+    height: fit-content;
+    margin-top: 20px;
+    opacity: 1.0;
+    margin-bottom: 10px;
+}
+
+#Item:hover {
+    height: fit-content;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+/****************************/
+
+.Project-Template-Container {
+    display: flex;
+    gap: 100px;
+    background-color: #88B4E1;
+}
+
+.Project-Side-Bar-Container {
+    /* background-color: #F2F2F2; */
+    background-color: #343f56;
+    /* z-index: -1; */
+    width: min-content;
+    display: flex;
+    justify-content: center;
+}
+
+.Project-Flex-Container {
+    display: flex;
+    /* gap: 200px; */
+    height: 600px;
+    align-items: center;
+}
+
+.Project-Content-Flex-Container {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+}
+
+.Project-Selection-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Project-Selection-Container h1 {
+    font-size: 29px;
+    font-weight: 500;
+    margin: auto;
+    width: 51%;
+}
+
+.Project-Selection-Container h2 {
+    font-weight: normal;
+}
+
+.Project-Selection-Container #Click_Project {
+    width: 70px;
+}
+
+.Project-Description-Container {
+    align-content: center;
+}
+
+/****************************/
+
+.Order-Template-Container {
+    display: flex;
+    gap: 100px;
+    background-color: #88B4E1;
+}
+
+.Order-Side-Bar-Container {
+    /* background-color: #F2F2F2; */
+    background-color: #343f56;
+    /* z-index: -1; */
+    width: min-content;
+    display: flex;
+    justify-content: center;
+}
+
+.Order-Flex-Container {
+    display: flex;
+    /* gap: 200px; */
+    height: 600px;
+    align-items: center;
+}
+
+.Order-Content-Flex-Container {
+    display: flex;
+    gap: 200px;
+    align-items: center;
+}
+
+.Order-Selection-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.Order-Selection-Container h1 {
+    font-size: 29px;
+    font-weight: 500;
+    margin: auto;
+}
+
+.Order-Selection-Container h2 {
+    font-weight: normal;
+}
+
+.Order-Selection-Container #Click_Project {
+    width: 70px;
+}
+
+.Order-Description-Container {
+    align-content: center;
+}

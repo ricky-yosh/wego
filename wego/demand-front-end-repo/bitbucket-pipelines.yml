@@ -1,0 +1,28 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: DemandFrontendDeployment
+          deployment: Production
+          script:
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $DEMAND_USER
+                SERVER: $DEMAND_SERVER
+                COMMAND:
+                  "cd /home/team12/repos/demand-front-end-repo &&
+                  git pull origin main &&
+                  npm install &&
+                  npm run build"
+                  # npm test - removed until Bitbucket Pipeline becomes quicker
+
+# pipelines:
+#   branches:
+#     main:
+#         - step:
+#             name: DemandFrontendDeployment
+#             deployment: Staging
+#             script:
+#               - echo "pipeline disabled for main"

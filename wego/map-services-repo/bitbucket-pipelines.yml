@@ -1,0 +1,18 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: MapServicesDeployment
+          deployment: Production
+          script:
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $SUPPLY_USER
+                SERVER: $SUPPLY_SERVER
+                COMMAND: "cd /home/team12/repos/map-services-repo &&
+                git pull origin main &&
+                source virtual-env/bin/activate &&
+                pip install -r requirements.txt &&
+                python3 manage.py test"

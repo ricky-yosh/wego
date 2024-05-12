@@ -1,0 +1,91 @@
+# Supply Cloud Docker Compose
+
+services:
+  common-services-be:
+    build:
+      context: ../common-services-back-end-repo
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      sh -c "python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    # We have to specify the mongodb because common services has the ability to migrate both mysql and mongodb
+    environment:
+      - USE_MONGO_DB=True
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=27017
+    volumes:
+      - ../common-services-back-end-repo:/usr/src/app
+
+  supply-fe:
+    build:
+      context: ../supply-front-end-repo
+    environment:
+      - NODE_ENV=local
+      - VITE_MAPBOX_API_TOKEN=${MAPBOX_API_TOKEN}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - /usr/src/app/node_modules
+      - ../supply-front-end-repo:/usr/src/app
+
+  supply-be:
+    build:
+      context: .
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+    command: >
+      sh -c "python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:9000"
+    environment:
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=27017
+    volumes:
+      - .:/usr/src/app
+
+  map-services:
+    build:
+      context: ../map-services-repo
+    ports:
+      - "10000:10000"
+    depends_on:
+      - db
+    command: >
+      sh -c "python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:10000"
+    environment:
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=27017
+    volumes:
+      - ../map-services-repo:/usr/src/app
+
+  db:
+    image: mongo
+    restart: always
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DATABASE_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js 
+      - db-data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/${DATABASE_NAME} --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  db-data:

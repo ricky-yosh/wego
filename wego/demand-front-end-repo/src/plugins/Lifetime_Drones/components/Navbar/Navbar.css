@@ -1,0 +1,39 @@
+.Navigation-Container {
+    display: flex;
+    justify-content: end;
+    height: 100px;
+    box-shadow: 2px 2px 2px grey;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-color: #363F54; /* Background color */
+}
+
+.Button-Container {
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+    gap: 50px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #363F54;
+    color: white;
+}
+
+.Button-Container button {
+    border: none;
+    background-color: #363F54;
+    font-weight: 250;
+    font-size: 20px;
+    opacity: 1.0;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.Button-Container button:hover {
+    border: none;
+    background-color: #363F54;
+    font-weight: 250;
+    font-size: 20px;
+    opacity: 0.5;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}

@@ -1,0 +1,34 @@
+.Project-Form-Container {
+    display: flex;
+    padding-top: 50px;
+    padding-left: 100px;
+    padding-bottom: 50px;
+    padding-right: 100px;
+    flex-direction: column;
+    background-color: #87B4E1;
+    gap: 20px;
+}
+
+.Project-Form-Container h1 {
+    text-align: center;
+}
+
+.Form-Data-Container {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.Form-Data-Container input {
+    height: 30px;
+    width: 500px;
+}
+
+.Form-Data-Container textarea {
+    height: 100px;
+    width: 500px;
+    max-width: 500px;
+    min-width: 500px;
+    max-height: 300px;
+    min-height: 100px;
+}

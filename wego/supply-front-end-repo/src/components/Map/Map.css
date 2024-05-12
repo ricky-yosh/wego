@@ -1,0 +1,60 @@
+.map-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 120px);
+  margin: 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #88B4E1;
+  color: black;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+#map {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+height: 100%;
+}
+
+.custom-marker {
+width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.custom-car-icon {
+width: 40px; 
+height: 40px; 
+display: flex;
+align-items: center;
+justify-content: center;
+background-image: url('../../assets/car-icon.png');/* added a car marker to move on the route */
+background-size: cover;
+}
+
+@media (max-width: 768px) {
+.map-container {
+  padding-top: 0;
+}
+}
+
+.mapboxgl-popup.my-popup .mapboxgl-popup-content {
+background-color: #808080;
+color: #ffffff;
+font-weight: bold;
+}
+
+.mapboxgl-popup.my-popup .mapboxgl-popup-close-button {
+color: #808080;
+}

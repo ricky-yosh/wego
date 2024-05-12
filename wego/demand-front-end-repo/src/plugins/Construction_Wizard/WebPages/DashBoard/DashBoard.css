@@ -1,0 +1,45 @@
+.DashBoard-Body-Container {
+    display: flex;
+    padding: 100px;
+    background-color: #87B4E1;
+}
+
+.Body-Image-Container img {
+    width: 500px;
+    border-radius: 8%;
+}
+
+.Body-Text-Content {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    gap: 20px;
+}
+
+.Body-Text-Content h1 {
+    padding-top: 80px;
+    font-weight: lighter;
+    font-size: 60px;
+}
+
+.Body-Text-Content #create-project-button {
+    width: 200px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: large;
+    border-radius: 8px;
+    border-width: 0;
+    opacity: 1.0;
+}
+
+.Body-Text-Content #create-project-button:hover {
+    width: 200px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: large;
+    border-radius: 8px;
+    border-width: 0;
+    opacity: 0.8;
+}

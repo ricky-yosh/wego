@@ -1,0 +1,92 @@
+/* Specific styles scoped to CreateOrder component */
+
+.co-body-container {
+    background-color: #87B4E1;
+}
+
+.co-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.co-form-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.co-form-group {
+    margin-bottom: 15px;
+}
+
+.co-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.co-input,
+.co-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Ensures padding does not affect width */
+    margin-bottom: 2px;
+}
+
+.co-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.co-button:disabled {
+    background-color: #ccc;
+}
+
+.co-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* Cart Styling, specifically scoped */
+.co-cart {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.co-cart h2 {
+    color: #333;
+}
+
+.co-cart ul {
+    list-style: none;
+    padding: 0;
+}
+
+.co-cart ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+.co-cart ul li:last-child {
+    border-bottom: none;
+}
+
+.co-cart p {
+    color: #666;
+}

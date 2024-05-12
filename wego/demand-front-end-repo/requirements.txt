@@ -1,0 +1,5 @@
+GDAL==3.8.4
+gpg @ file:///private/tmp/gpgme-20231223-5918-20svrm/gpgme-1.23.2/lang/python
+numpy @ file:///private/tmp/numpy-20240206-5948-gu6j5s/numpy-1.26.4
+protobuf==4.25.3
+wheel @ file:///opt/homebrew/Cellar/python%403.12/3.12.2_1/libexec/wheel-0.42.0-py3-none-any.whl#sha256=5f1ca525bef7466225922019d72cb06a9e91cd3ff807ddd4be1acb84655e5107

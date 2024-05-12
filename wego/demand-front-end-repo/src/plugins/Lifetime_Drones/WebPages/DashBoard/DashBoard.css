@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.DashBoard-Body-Container {
+    display: flex;
+    padding: 100px;
+    background-color: #88B4E1;
+}
+
+.Body-Image-Container img {
+    width: 500px;
+    border-radius: 8%;
+}
+
+.Body-Text-Content {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    gap: 20px;
+}
+
+.Body-Text-Content h1 {
+    padding-top: 80px;
+    font-weight: lighter;
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Body-Text-Content #create-project-button {
+    width: 200px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    opacity: 1.0;
+}
+
+.Body-Text-Content #create-project-button:hover {
+    width: 200px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 8px;
+    opacity: 0.8;
+}

@@ -1,0 +1,61 @@
+/* Table.css */
+
+.table-container {
+  max-height: 400px; /* maximum height for the table container */
+  width: 90%; /* Adjust the width as needed */
+  overflow-y: auto; /* Allows vertical scrolling on overflow */
+  overflow-x: auto; /* Allows horizontal scrolling on overflow */
+  display: block; /* Block display to handle overflow */
+  margin-left: 20px; 
+}
+.small-table-container {
+  width: 40%; /* Set the width to 30% */
+}
+
+
+.table-main {
+  width: 100%; /* Ensure the table fills the container */
+  border-collapse: collapse; /* Collapse borders */
+  border: 2px solid #F5E6CA
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #2c3e50; /* Dark grey line for separating rows */
+}
+
+/* Header styles */
+th {
+  background-color: #343F56; /* Dark blue background for headers */
+  color: white;
+  border-bottom: 1px solid #2c3e50; 
+}
+
+/* Row styles for zebra striping */
+tr:nth-child(even) {
+  background-color: #2c3e50; /* Dark grey for even rows */
+}
+
+tr:nth-child(odd) {
+  background-color: #34495e; /* Slightly lighter grey for odd rows */
+}
+
+tr:hover {
+  background-color:#4074a8; /* Light blue hover effect for rows */
+}
+
+.refresh-button {
+  width: 20%;
+  padding: 5px;
+  background-color: #343F56;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px; /* Adjust based on layout needs */
+}
+
+.refresh-button:hover {
+  background-color:#4074a8; /* Light blue hover effect for rows */
+}

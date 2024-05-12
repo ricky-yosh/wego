@@ -1,0 +1,35 @@
+.metrics-row {
+  display: flex;
+  justify-content: space-around; /* Distribute space around cards */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  gap: 10px; /* Space between cards */
+}
+
+.metric-card {
+  background-color: #42668a; /* Dark blue background for the card */
+  color: white; /* Text color for the card content */
+  padding: 20px; /* Padding inside cards */
+  border-radius: 8px; /* Rounded corners for cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box-shadow for cards */
+  text-align: center; /* Center text for cards */
+  display: flex;
+  align-items: center; /* Align items in the center vertically within the card */
+  flex: 1; /* Cards grow and shrink as needed */
+  min-width: 50px; /* Minimum width of a card */
+  max-width: 100px; /* Maximum width of a card */
+  border: 2px solid #F5E6CA
+}
+
+.metric-details {
+  margin-left: 10px; /* Space after the icon if any */
+}
+
+.metric-value {
+  font-size: 2em; /* Large font size for the metric value */
+  margin: 0; /* Reset margin for the value */
+}
+
+.metric-title {
+  margin: 0; /* Reset margin for the title */
+}
+

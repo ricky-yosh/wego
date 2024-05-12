@@ -1,0 +1,54 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Unit Test
+          image: python:3.11.6
+          caches:
+            - pip
+          script:
+            - apt-get update
+            - apt-get install -y libgdal-dev
+            - pip install --upgrade pip
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - echo "Creating config.py with necessary settings"
+            - |
+              echo "DATABASE_PASSWORD = 'test'" >> config.py
+              echo "SECRET_KEY = 'test'" >> config.py
+              echo "DEBUG = True" >> config.py
+            - export DJANGO_ENV=development
+            - python3 manage.py test --noinput --verbosity=2
+      - step:
+          name: Test Coverage
+          image: python:3.11.6
+          caches:
+            - pip
+          script:
+            - apt-get update
+            - apt-get install -y libgdal-dev
+            - pip install --upgrade pip
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - echo "Creating config.py with necessary settings"
+            - |
+              echo "DATABASE_PASSWORD = 'test'" >> config.py
+              echo "SECRET_KEY = 'test'" >> config.py
+              echo "DEBUG = True" >> config.py
+            - export DJANGO_ENV=development
+            - coverage run --source='.' --omit="myproject/asgi.py,myproject/wsgi.py,reload_docker.py" manage.py test --noinput
+            - coverage report
+      - step:
+          name: SupplyBackendDeployment
+          deployment: Production
+          script:
+            - pipe: atlassian/ssh-run:0.8.0
+              variables:
+                SSH_USER: $SUPPLY_USER
+                SERVER: $SUPPLY_SERVER
+                COMMAND: "cd /home/team12/repos/supply-back-end-repo &&
+                git pull origin main &&
+                source virtual-env/bin/activate &&
+                export DJANGO_ENV=production &&
+                pip install -r requirements.txt &&
+                python3 manage.py migrate"

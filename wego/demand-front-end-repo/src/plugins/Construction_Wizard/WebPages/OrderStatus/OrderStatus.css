@@ -1,0 +1,70 @@
+.order-status-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-status-container h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+.status-details {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.destination,
+.completion {
+    margin: 10px;
+    font-size: 16px;
+}
+
+.map-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 500px;
+    /* Adjust based on your map component */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+/* Extra styles for visual feedback on progress */
+.completion {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.progress-bar-container {
+    width: 100%;
+    /* Full width of the container */
+    background-color: #ddd;
+    /* Light grey background */
+    border-radius: 4px;
+    /* Rounded corners */
+    margin-top: 10px;
+    /* Space above the progress bar */
+}
+
+.progress-bar {
+    height: 20px;
+    /* Fixed height of the progress bar */
+    background-color: #4CAF50;
+    /* Green background for visual appeal */
+    border-radius: 4px;
+    /* Rounded corners */
+    transition: width 0.3s ease-in-out;
+    /* Smooth transition for width changes */
+}

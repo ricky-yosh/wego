@@ -1,0 +1,74 @@
+
+.fleet-form-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: #88B4E1;
+    min-height: calc(100vh - 120px);
+    margin: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .fleet-form-section, .fleet-vehicle-list-section {
+    flex-basis: 50%;
+    padding: 20px;
+  }
+  
+.fleet-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #343F56;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #F5E6CA;
+    margin: 0 auto 20px auto; 
+  }
+  
+  .fleet-form-heading {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343F56;
+  }
+  
+  .fleet-form-input, .fleet-form-button {
+    width: calc(100% - 50px); 
+    padding: 15px;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid #F5E6CA;
+    margin: 10px 0;
+  }
+  
+  .fleet-form-button {
+    background-color: #3c4a68;
+    color: white;
+    border: 2px solid #F5E6CA;
+    cursor: pointer;
+    width: 45%; 
+    display: block; 
+    margin: 20px auto; 
+    padding: 10px; 
+    font-size: 1em; 
+  }
+  
+  .fleet-form-button:hover {
+    background-color: #4074a8;
+  }
+  
+  @media (max-width: 768px) {
+    .fleet-form-container {
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  
+    .fleet-form,
+    .fleet-vehicle-list {
+      width: 100%; /* Full width on smaller screens */
+      margin: 10px 0; /* Stack with space between on smaller screens */
+    }
+  }

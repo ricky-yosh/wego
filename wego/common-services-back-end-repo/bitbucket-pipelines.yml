@@ -1,0 +1,73 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Unit Test
+          image: python:3.11.6
+          caches:
+            - pip
+          script:
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pip install --upgrade pip
+            - echo "Creating config.py with necessary settings"
+            - |
+              echo "DATABASE_PASSWORD_MYSQL = 'test'" > config.py
+              echo "DATABASE_PASSWORD_MONGO = 'test'" >> config.py
+              echo "SECRET_KEY = 'test'" >> config.py
+              echo "DEBUG = True" >> config.py
+            - export DJANGO_ENV=development
+            - python3 manage.py test --noinput --verbosity=2
+      - step:
+          name: Test Coverage
+          image: python:3.11.6
+          caches:
+            - pip
+          script:
+            - export DJANGO_ENV=development
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pip install coverage
+            - echo "Creating config.py with necessary settings"
+            - |
+              echo "DATABASE_PASSWORD_MYSQL = 'test'" > config.py
+              echo "DATABASE_PASSWORD_MONGO = 'test'" >> config.py
+              echo "SECRET_KEY = 'test'" >> config.py
+              echo "DEBUG = True" >> config.py
+            - coverage run --source='.' manage.py test --noinput
+            - coverage report
+      - parallel:
+          - step:
+              name: CommonServicesStageDemand
+              deployment: ProductionDemand
+              script:
+                - pipe: atlassian/ssh-run:0.8.0
+                  variables:
+                    SSH_USER: $DEMAND_USER 
+                    SERVER: $DEMAND_SERVER
+                    COMMAND: |
+                      set -e;
+                      export USE_MONGO_DB="False";
+                      export DJANGO_ENV=production;
+                      cd /home/team12/repos/common-services-back-end-repo;
+                      git pull origin main;
+                      source virtual-env/bin/activate;
+                      pip install -r requirements.txt;
+                      python3 manage.py migrate;
+          - step:
+              name: CommonServicesStageSupply
+              deployment: ProductionSupply
+              script:
+                - pipe: atlassian/ssh-run:0.8.0
+                  variables:
+                    SSH_USER: $SUPPLY_USER 
+                    SERVER: $SUPPLY_SERVER
+                    COMMAND: |
+                      set -e;
+                      export USE_MONGO_DB="True";
+                      export DJANGO_ENV=production;
+                      cd /home/team12/repos/common-services-back-end-repo;
+                      git pull origin main;
+                      source virtual-env/bin/activate;
+                      pip install -r requirements.txt;
+                      python3 manage.py migrate;

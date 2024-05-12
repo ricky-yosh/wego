@@ -1,0 +1,74 @@
+services:
+  common-services-be:
+    build:
+      context: ../common-services-back-end-repo
+    ports:
+      - 8000:8000
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "python /usr/src/app/manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+    volumes:
+      - ../common-services-back-end-repo:/usr/src/app
+
+  demand-be:
+    build:
+      context: .
+    ports:
+      - 9000:9000
+    depends_on:
+      db:
+        condition: service_healthy
+    command: > 
+      sh -c "python /usr/src/app/manage.py runserver 0.0.0.0:9000"
+    environment:
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+    volumes:
+      - .:/usr/src/app
+
+  demand-fe:
+    build:
+      context: ../demand-front-end-repo
+    environment:
+      NODE_ENV: local
+    ports:
+      - 3000:3000
+    volumes:
+      - /usr/src/app/node_modules
+      - ../demand-front-end-repo:/usr/src/app
+
+  db:
+    command: --default-authentication-plugin=caching_sha2_password
+    image: mysql:latest
+    restart: always
+    user: mysql
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_USER=${DATABASE_USER}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
