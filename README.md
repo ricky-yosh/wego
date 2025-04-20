@@ -14,7 +14,6 @@
 
 Finished project for COSC-3339 Software Engineering at St. Edward's Universtiy.
 Originally worked on in BitBucket but transferred into GitHub for sharing purpsoes.
-This project was divided into multiple repos and this will have open passwords and API keys.
 
 ## Project
 
